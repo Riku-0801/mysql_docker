@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-  db: 
+  db:
     platform: linux/x86_64
     container_name: back_db
-    image: mysql:5.7
+    image: mysql:latest
     restart: always
     tty: true
     environment:
@@ -12,10 +12,10 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: "password"
       MYSQL_ROOT_PASSWORD: "password"
-    ports: 
+    ports:
       - 53306:53306
     command: --port 53306
-    volumes: 
+    volumes:
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/conf.d/my.cnf:/etc/my.cnf
       - ./mysql/log/mysql:/var/log/mysql
